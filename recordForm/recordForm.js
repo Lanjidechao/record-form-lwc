@@ -3,6 +3,8 @@ import { LightningElement, track, api} from 'lwc';
 export default class RecordForm extends LightningElement {
     @api recordId
     @api sections
+    @api headerName
+    @api objectName
     @track editMode = false
     get allsections() {
         try {

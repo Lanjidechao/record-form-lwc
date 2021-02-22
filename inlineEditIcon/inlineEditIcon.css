@@ -1,0 +1,15 @@
+.icon-output {
+    width: 5%;
+    height: 100%;
+    /* display: flex;
+    align-items: center; */
+}
+
+.icon-opacity {
+    opacity: .25;
+}
+
+.icon-opacity:hover {
+    cursor: pointer;
+    opacity: .35;
+}
