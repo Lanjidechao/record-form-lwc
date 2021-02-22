@@ -1,0 +1,38 @@
+<template>
+    <div class="content">
+        <div class="slds-page-header slds-grid">
+            <div class="slds-grow slds-grid slds-media_center">
+                <lightning-icon icon-name="standard:opportunity" size="small"></lightning-icon>
+                <lightning-formatted-text class="custom_title" value="案件基本情報"></lightning-formatted-text>
+            </div>
+        </div>
+        <lightning-record-edit-form record-id={recordId}
+            onload={onLoad} 
+            onsuccess={handleSuccess}
+            object-api-name='T_ORDER__c'>
+            <lightning-accordion class="slds-size_1-of-1" allow-multiple-sections-open active-section-name={allsections}>
+            <template if:false={editMode}>
+                <template for:each={sections} for:item="section">
+                    <lightning-accordion-section key={section.id} class="text slds-m-top--small" name={section.id} label={section.name}>
+                        <div class="slds-grid slds-wrap">
+                            <template for:each={section.fields} for:item="field">
+                                <!-- <span key={field.name}>NESTED EACH</span> -->
+                                <div key={field.name} class="slds-size_1-of-2">
+                                    <div class="slds-size_1-of-1 slds-grid">
+                                        <div class="field-output">
+                                            <lightning-output-field variant="standard" field-name={field.name}>
+                                            </lightning-output-field>
+                                        </div>
+                                        <c-inline-edit-icon show={field.show} onedit={editMode}>
+                                        </c-inline-edit-icon>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </lightning-accordion-section>
+                </template>
+            </template>
+            </lightning-accordion>
+        </lightning-record-edit-form> 
+    </div>
+</template>
